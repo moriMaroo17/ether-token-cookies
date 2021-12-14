@@ -22,62 +22,71 @@ module.exports = {
         this.contractAddress = result._address
     },
 
-    // register: async function (login, name, password, address, callback) {
-    //     const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
-    //     await instance.setProvider(this.web3.currentProvider)
-    //     await instance.methods.add_customer(login, name, password)
-    //         .send({ gas: 4712388, from: address }, (error, result) => {
-    //             callback(error, result)
-    //         })
-    // },
+    register: async function (login, name, password, address, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.add_customer(login, name, password)
+            .send({ gas: 4712388, from: address }, (error, result) => {
+                callback(error, result)
+            })
+    },
 
-    // getAccounts: async function (callback) {
-    //     const accounts = await this.web3.eth.getAccounts()
-    //     callback(accounts)
-    // },
+    getAccounts: async function (callback) {
+        const accounts = await this.web3.eth.getAccounts()
+        callback(accounts)
+    },
 
-    // login: async function (login, password, callback) {
-    //     const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
-    //     await instance.setProvider(this.web3.currentProvider)
-    //     await instance.methods.check_auth_data(login, password)
-    //         .call((error, result) => {
-    //             callback(error, result)
-    //         })
-    // },
+    login: async function (login, password, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.check_auth_data(login, password)
+            .call((error, result) => {
+                callback(error, result)
+            })
+    },
 
-    // getRole: async function (address, callback) {
-    //     const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
-    //     await instance.setProvider(this.web3.currentProvider)
-    //     await instance.methods.get_role(address)
-    //         .call((error, result) => {
-    //             callback(error, result)
-    //         })
-    // },
+    getRole: async function (address, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.get_role(address)
+            .call((error, result) => {
+                callback(error, result)
+            })
+    },
 
-    // setToken: async function (address, token, user, callback) {
-    //     const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
-    //     await instance.setProvider(this.web3.currentProvider)
-    //     await instance.methods.set_token(address, token)
-    //         .send({ gas: 4712388, from: user}, (error, result) => {
-    //             callback(error, result)
-    //         })
-    // },
+    setToken: async function (address, token, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.set_token(address, token)
+            .send({ gas: 4712388, from: address}, (error, result) => {
+                callback(error, result)
+            })
+    },
 
-    // getToken: async function (address, callback) {
-    //     const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
-    //     await instance.setProvider(this.web3.currentProvider)
-    //     await instance.methods.get_token(address)
-    //         .call((error, result) => {
-    //             callback(error, result)
-    //         })
-    // },
+    getToken: async function (address, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.get_token(address)
+            .call((error, result) => {
+                callback(error, result)
+            })
+    },
 
-    // logout: async function (address, user, callback) {
-    //     const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
-    //     await instance.setProvider(this.web3.currentProvider)
-    //     await instance.methods.logout(address, token)
-    //         .send({ gas: 4712388, from: user}, (error, result) => {
-    //             callback(error, result)
-    //         })
-    // },
+    logout: async function (address, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.logout(address)
+            .send({ gas: 4712388, from: address}, (error, result) => {
+                callback(error, result)
+            })
+    },
+
+    getAddressByLogin: async function (login, callback) {
+        const instance = await new this.web3.eth.Contract(contract.abi, this.contractAddress)
+        await instance.setProvider(this.web3.currentProvider)
+        await instance.methods.get_address_by_login(login)
+            .call((error, result) => {
+                callback(error, result)
+            })
+    }
 }

@@ -67,7 +67,7 @@ contract Accounts {
     mapping(address => Customer) public customers;
     mapping(address => Admin) public admins;
 
-    mapping(address => string) public auth_token;
+    mapping(address => string) private auth_token;
 
     function get_role(address _user_address)
         public
@@ -153,5 +153,9 @@ contract Accounts {
 
     function logout(address _user_address) public {
         auth_token[_user_address] = "";
+    }
+
+    function get_address_by_login(string memory _login) public view returns(address) {
+        return address_per_login[_login];
     }
 }
