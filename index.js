@@ -26,6 +26,9 @@ app.post('/login', async (req, res) => {
     // console.log(token)
     console.log(address)
     res.cookie.token = token
+    // res.cookie('name', 'token').send(token)
+    res.set('Set-Cookie', `token=${token}`)
+    // res.coo
     console.log(res.cookie)
     await connection.login(login, password, (err, result) => {
         if (err) {

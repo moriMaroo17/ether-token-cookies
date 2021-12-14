@@ -30,6 +30,8 @@ try:
     else:
 
         print(res.text)
+        print(res.headers)
+        print(res.cookies.get_dict())
 
 except:
 
